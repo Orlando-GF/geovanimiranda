@@ -43,7 +43,13 @@
   }
   
   .bg-lux-gradient {
-    @apply bg-gradient-to-br from-blue-50 via-white to-blue-50;
+    @apply bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden;
+  }
+  
+  .bg-lux-gradient::after {
+    content: "";
+    @apply absolute inset-0 opacity-20 pointer-events-none;
+    background: radial-gradient(circle at 50% 50%, #3B82F6 0%, transparent 70%);
   }
   
   .btn-whatsapp-glow {
