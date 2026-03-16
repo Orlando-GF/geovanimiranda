@@ -2,59 +2,70 @@
 ---
 <header 
   x-data="{ mobileMenuOpen: false, scrolled: false }" 
-  @scroll.window="scrolled = (window.pageYOffset > 20)"
-  :class="{ 'glass-nav py-4': scrolled, 'py-6': !scrolled }"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  @scroll.window="scrolled = (window.pageYOffset > 50)"
+  :class="{ 'glass-nav py-3': scrolled, 'py-8': !scrolled }"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out"
 >
   <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
     <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg">
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="w-11 h-11 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
         </svg>
       </div>
-      <div>
-        <h1 class="font-heading font-bold text-blue-950 text-xl leading-tight">Geovani Miranda</h1>
-        <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary leading-tight">FONOAUDIÓLOGO</p>
+      <div class="flex flex-col">
+        <span class="font-heading font-bold text-blue-950 text-xl tracking-tighter leading-none">Geovani Miranda</span>
+        <span class="text-[9px] uppercase tracking-[0.3em] font-black text-primary mt-1">Fonoaudiólogo</span>
       </div>
-    </div>
+    </a>
 
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
-      <a href="#sobre" class="hover:text-primary transition-colors">Sobre</a>
-      <a href="#servicos" class="hover:text-primary transition-colors">Serviços</a>
-      <a href="#depoimentos" class="hover:text-primary transition-colors">Depoimentos</a>
-      <a href="#contato" class="hover:text-primary transition-colors">Contato</a>
-      <a href="#agendamento" class="btn-primary !px-6 !py-2.5 !text-base">Agendar Consulta</a>
+    <!-- Desktop Nav: Montgomery Style (Executive) -->
+    <nav class="hidden md:flex items-center gap-10 font-bold text-[13px] uppercase tracking-widest text-slate-500">
+      <a href="#sobre" class="hover:text-primary transition-colors hover:translate-y-[-1px] active:translate-y-0 relative group">
+        Sobre
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+      </a>
+      <a href="#servicos" class="hover:text-primary transition-colors hover:translate-y-[-1px] active:translate-y-0 relative group">
+        Serviços
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+      </a>
+      <a href="#depoimentos" class="hover:text-primary transition-colors hover:translate-y-[-1px] active:translate-y-0 relative group">
+        Depoimentos
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+      </a>
+      <a href="#contato" class="hover:text-primary transition-colors hover:translate-y-[-1px] active:translate-y-0 relative group">
+        Contato
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+      </a>
+      <a href="#agendamento" class="btn-primary !px-7 !py-3.5 !text-[12px] !rounded-xl !shadow-none hover:!shadow-lg">Agendar Consulta</a>
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-slate-800 focus:outline-none">
-      <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-blue-950 focus:outline-none">
+      <div class="w-8 flex flex-col items-end gap-1.5">
+        <span :class="mobileMenuOpen ? 'rotate-45 translate-y-2' : ''" class="w-8 h-0.5 bg-current transition-all duration-300"></span>
+        <span :class="mobileMenuOpen ? 'opacity-0' : ''" class="w-6 h-0.5 bg-current transition-all duration-300"></span>
+        <span :class="mobileMenuOpen ? '-rotate-45 -translate-y-2 w-8' : 'w-4'" class="h-0.5 bg-current transition-all duration-300"></span>
+      </div>
     </button>
   </div>
 
   <!-- Mobile Menu -->
   <div 
     x-show="mobileMenuOpen" 
-    x-transition:enter="transition ease-out duration-200"
-    x-transition:enter-start="opacity-0 -translate-y-4"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 -translate-y-10"
     x-transition:enter-end="opacity-100 translate-y-0"
-    class="md:hidden glass-nav absolute top-full left-0 right-0 p-6 border-t border-slate-100"
+    class="md:hidden glass-nav absolute top-full left-0 right-0 p-8 border-t border-slate-100 shadow-2xl"
     style="display: none;"
   >
-    <div class="flex flex-col gap-4 font-bold text-slate-800">
+    <div class="flex flex-col gap-6 font-black text-slate-800 uppercase tracking-widest text-sm text-center">
       <a href="#sobre" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Sobre</a>
       <a href="#servicos" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Serviços</a>
       <a href="#depoimentos" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Depoimentos</a>
       <a href="#contato" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Contato</a>
-      <a href="#agendamento" @click="mobileMenuOpen = false" class="btn-primary w-full text-center">Agendar Consulta</a>
+      <a href="#agendamento" @click="mobileMenuOpen = false" class="btn-primary w-full text-center tracking-widest mt-4">Agendar Agora</a>
     </div>
   </div>
 </header>
