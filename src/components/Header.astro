@@ -1,0 +1,60 @@
+---
+---
+<header 
+  x-data="{ mobileMenuOpen: false, scrolled: false }" 
+  @scroll.window="scrolled = (window.pageYOffset > 20)"
+  :class="{ 'glass-nav py-4': scrolled, 'py-6': !scrolled }"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+        </svg>
+      </div>
+      <div>
+        <h1 class="font-heading font-bold text-blue-950 text-xl leading-tight">Geovani Miranda</h1>
+        <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary leading-tight">FONOAUDIÓLOGO</p>
+      </div>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+      <a href="#sobre" class="hover:text-primary transition-colors">Sobre</a>
+      <a href="#servicos" class="hover:text-primary transition-colors">Serviços</a>
+      <a href="#depoimentos" class="hover:text-primary transition-colors">Depoimentos</a>
+      <a href="#contato" class="hover:text-primary transition-colors">Contato</a>
+      <a href="#agendamento" class="btn-primary !px-6 !py-2.5 !text-base">Agendar Consulta</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-slate-800 focus:outline-none">
+      <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    x-show="mobileMenuOpen" 
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 -translate-y-4"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    class="md:hidden glass-nav absolute top-full left-0 right-0 p-6 border-t border-slate-100"
+    style="display: none;"
+  >
+    <div class="flex flex-col gap-4 font-bold text-slate-800">
+      <a href="#sobre" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Sobre</a>
+      <a href="#servicos" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Serviços</a>
+      <a href="#depoimentos" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Depoimentos</a>
+      <a href="#contato" @click="mobileMenuOpen = false" class="py-2 hover:text-primary transition-colors">Contato</a>
+      <a href="#agendamento" @click="mobileMenuOpen = false" class="btn-primary w-full text-center">Agendar Consulta</a>
+    </div>
+  </div>
+</header>
