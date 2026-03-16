@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3B82F6;
+  --color-secondary: #60A5FA;
+  --color-cta: #F97316;
+  --color-background: #F8FAFC;
+  --color-text: #1E293B;
+
+  --font-heading: "Figtree", sans-serif;
+  --font-body: "Noto Sans", sans-serif;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;700&display=swap');
+
+  body {
+    @apply bg-background text-text font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cta text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer hover:opacity-90 hover:-translate-y-0.5 shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer hover:bg-primary/5 hover:-translate-y-0.5;
+  }
+
+  .card-premium {
+    @apply bg-white rounded-xl p-6 shadow-md transition-all duration-300 cursor-pointer hover:shadow-lg hover:-translate-y-1 border border-slate-100;
+  }
+
+  .glass-nav {
+    @apply fixed top-4 left-4 right-4 z-50 bg-white/80 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg;
+  }
+}
